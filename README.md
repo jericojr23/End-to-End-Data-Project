@@ -14,3 +14,7 @@ Install the packages using this command:
 
 `pip install -r requirements.txt`
 
+## Discussion
+It uses File transfer Protocol (FTP) to download, upload, and transfer files from one location to another on the internet. 
+- The FTP server would be made using WSL with vsftpd. 
+
