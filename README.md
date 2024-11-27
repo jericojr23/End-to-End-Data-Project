@@ -37,3 +37,13 @@ sudo chown nobody:nogroup /home/ftpuser/ftp
 sudo chmod a-w /home/ftpuser/ftp
 
 echo "ftpuser" | sudo tee -a /etc/vsftpd.chroot_list
+
+### Checking whether the files are uploaded to the ftp server
+wsl -u ftpuser 
+ls /home/ftpuser/ -l 
+
+### Expected Output:
+-rw------- 1 ftpuser ftpuser 1257848 Nov 27 14:49 OFAC_ADD.CSV
+-rw------- 1 ftpuser ftpuser  879350 Nov 27 14:49 OFAC_ALT.CSV
+-rw------- 1 ftpuser ftpuser 4022823 Nov 27 14:49 OFAC_SDN.CSV
+dr-xr-xr-x 2 nobody  nogroup    4096 Nov 27 12:33 ftp
