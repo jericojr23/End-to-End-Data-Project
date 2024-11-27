@@ -51,7 +51,16 @@ if __name__ =="__main__":
           'PARAMS': {'names': ['ent_num', 'add_num', 'address', 'complete_address', 'country',
            'add_remarks'], 'na_values': '-0- ', 'skipfooter': 1, 'engine': 'python'}}}]
     """
-    print(read_csv(config[0]["OFAC_SDN"]).head())
- 
+    # Printing the first csv file as a DataFrame
+    # print(read_csv(config[0]["OFAC_SDN"]).head())
+    for source_config in config:
+        # Looping all of the csv files and storing them as a DataFrame
+        for source_name, source_params in source_config.items():
+            file_name = source_name + ".CSV"
+            df = read_csv(source_params)
+            df.to_csv(file_name, index=False)
+            # Confirm that the file has been saved
+            print(f"Saved {file_name} as CSV.")
+
 
     
