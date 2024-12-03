@@ -22,10 +22,13 @@ def get_ftp() -> FTP_TLS:
     return ftp 
 
 # Upload to the FTP Server 
-def ftp_upload(ftp: FTP_TLS, file_source: Path):
-    with open(file_source, "rb") as fp:
-        ftp.storbinary(f"STOR {file_source.name}", fp)
-    pass
+def ftp_upload(ftp: FTP_TLS, file_source: str):
+    file_path = Path(file_source)
+    file_name = file_path.name
+
+    # Upload file
+    with open(file_path, "rb") as fp:
+        ftp.storbinary(f"STOR ftp/new/{file_name}", fp)
 
 # Read csv and convert them into a dataframe
 
